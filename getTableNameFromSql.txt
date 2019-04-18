@@ -1,0 +1,22 @@
+/**
+	 * 获取sql中from后面的表名
+	 * @param sql
+	 * @return
+	 */
+	private ArrayList<String> getTableNameFromSql(String sql){
+		sql=sql.toLowerCase();//转为小写
+		sql = sql.replaceAll("\r|\n", " ");//将换行符替换为空格
+		//利用正则将连续的多个空格替换为一个空格
+		Pattern p = Pattern.compile("\\s+");
+		Matcher m = p.matcher(sql);
+		sql= m.replaceAll(" ");
+		
+		String[] arr = sql.split(" ");
+		ArrayList<String> arrayList=new ArrayList<>();
+		for (int i = 0; i < arr.length; i++) {
+			if ("from".equals(arr[i])) {
+				arrayList.add(arr[i+1]);
+			}
+		}
+		return arrayList;
+    }
