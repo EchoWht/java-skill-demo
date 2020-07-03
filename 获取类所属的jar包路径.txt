@@ -1,0 +1,2 @@
+Class myclass = Class.forName("org.apache.tomcat.util.codec.binary.Base64");
+System.out.println(myclass.getProtectionDomain().getCodeSource().getLocation());
